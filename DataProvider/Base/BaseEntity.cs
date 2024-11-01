@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataProvider.Base;
+﻿namespace DataProvider.Base;
 public interface IBaseEntity
 {
 }
@@ -15,7 +9,7 @@ public abstract class BaseEntity<T> : IBaseEntity
     // last changes datetime
     public DateTime ModifiedDate { get; set; }
     public DateTime CreateDate { get; set; }
-    public bool IsDeleted { get; set; }
+    public bool IsDeleted { get; set; } = false;
 }
 
 // this is default for id 

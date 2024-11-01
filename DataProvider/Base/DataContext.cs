@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace DataProvider.Base;
 public class DataContext : DbContext
@@ -19,12 +14,12 @@ public class DataContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.HasDefaultSchema("dbo");
 
-        //var assembly = typeof(IBaseEntity).Assembly;
-        ////dbset entities
-        //modelBuilder.RegisterAllEntities<IBaseEntity>(assembly);
+        var assembly = typeof(IBaseEntity).Assembly;
+        //dbset entities
+        modelBuilder.RegisterAllEntities<IBaseEntity>(assembly);
 
-        ////config entities (configs like IEntityTypeConfiguration,.....)
-        //modelBuilder.RegisterEntityTypeConfiguration(assembly);
+        //config entities (configs like IEntityTypeConfiguration,.....)
+        modelBuilder.RegisterEntityTypeConfiguration(assembly);
 
     }
 }
